@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Compute</title>
+</head>
+<body>
+    <h1>Balaji Sarvepalli Computes</h1>
+    <div>
+    <input type="number" name="number1" id="number1"><br>
+    <input type="number" name="number2" id="number2">
+    </div>
+    <button onclick="compute()">Remote Compute</button>
+    <div id="result">The result will be displayed</div>
+</body>
+<script>
+function compute(){
+    
+    fetch(`http://127.0.0.1:3001/?x=${document.getElementById('number1').value}&y=${document.getElementById('number2').value}`).then((result) => { return result.text()}).then ((text) => { 
+            console.log(text)
+            document.getElementById("result").innerHTML = (text);
+       });
+
+}
+</script>
+</html>

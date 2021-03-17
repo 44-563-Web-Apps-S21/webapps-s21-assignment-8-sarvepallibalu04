@@ -13,24 +13,24 @@ const server =
       fake_url = "https://fake.com/path" + req.url
       const url = new URL(fake_url)
       const search_params = url.searchParams
-
+        let x = search_params.get('x')
+        let y = search_params.get('y')
       
       console.log("Queries: " + search_params)
       if (req.method === 'GET' ) {
         
-          console.log("Look for query parameter data: " + search_params.get("data"))
-          console.log(`Math.abs(${search_params.get("x")}) is ${Math.abs(search_params.get("x"))}`)
-          console.log(`Math.abs(${search_params.get("y")}) is ${Math.abs(search_params.get("y"))}`)
+         console.log("Look for query parameter data: " + search_params.get("data"))
+         
           // Process the queries here
           res.statusCode = 200      //code for OK
-          res.setHeader('Content-Type', 'text/plain') 
+          res.setHeader('Content-Type', 'text/html') 
           
-          res.end();
+          res.end(`Math.abs(${x}) is  ${Math.abs(x)} and Math.abs(${y}) is  ${Math.abs(y)}`);
         
       } else {
         console.log("Status 404")
         res.statusCode = 404;
-        res.end();
+        res.end(`Math.abs(${search_params.get("x")}) is ${Math.abs(search_params.get("x"))}`);
       }
 
     }                           
