@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Arrays page</title>
+  
+</head>
+<body onload=remoteCompute()>
+  <h1>Balaji Sarvepalli Generates </h1>
+  <div id="result"></div>
+  
+  <script>
+    function remoteCompute(){
+      fetch(`http://127.0.0.1:3001/}`).then(
+      (resp) => { return resp.text()}).then ((text) => { 
+                console.log(text)
+                document.getElementById("result").innerHTML = (text);
+          }).catch(document.getElementById("result").innerHTML = "ERROR");    
+    
+    }
+  </script> 
+
+</body>
+</html>
